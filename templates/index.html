@@ -1,0 +1,414 @@
+{% extends "base.html" %}
+{% block title %}AI-Powered Cattle Analysis Platform{% endblock %}
+{% block content %}
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-10 mx-auto text-center">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            🐄 <span class="highlight">AI-Powered Cattle Analysis</span> 🔬
+                        </h1>
+                        <p class="hero-subtitle">
+                            Complete livestock analysis platform featuring advanced AI classification, 
+                            body structure analysis, and professional reporting tools.
+                        </p>
+                        <div class="hero-features">
+                            <div class="feature-badge">
+                                <i class="fas fa-brain"></i>
+                                <span>AI Classification</span>
+                            </div>
+                            <div class="feature-badge">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span>Body Analysis</span>
+                            </div>
+                            <div class="feature-badge">
+                                <i class="fas fa-chart-line"></i>
+                                <span>ATC Scoring</span>
+                            </div>
+                            <div class="feature-badge">
+                                <i class="fas fa-file-medical-alt"></i>
+                                <span>Pro Reports</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Overview Section -->
+    <div class="features-overview-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">🚀 Complete Feature Set</h2>
+                <p class="section-subtitle">Everything you need for professional cattle analysis</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>AI Classification</h3>
+                        <p>Advanced deep learning models for accurate cattle vs buffalo identification and breed classification</p>
+                        <ul class="feature-list">
+                            <li>✅ Cattle/Buffalo Detection</li>
+                            <li>✅ Breed Identification</li>
+                            <li>✅ Confidence Scoring</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">📏</div>
+                        <h3>Body Analysis</h3>
+                        <p>Comprehensive morphometric measurements and body structure evaluation</p>
+                        <ul class="feature-list">
+                            <li>✅ Body Length</li>
+                            <li>✅ Chest Width</li>
+                            <li>✅ Height at Withers</li>
+                            <li>✅ Rump Angle</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>ATC Scoring</h3>
+                        <p>Animal Type Classification quality assessment with detailed breakdowns</p>
+                        <ul class="feature-list">
+                            <li>✅ Overall ATC Score</li>
+                            <li>✅ Component Analysis</li>
+                            <li>✅ Quality Recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <h3>Professional Reports</h3>
+                        <p>Comprehensive analysis reports with downloadable PDF format</p>
+                        <ul class="feature-list">
+                            <li>✅ Detailed Analysis</li>
+                            <li>✅ PDF Export</li>
+                            <li>✅ Share & Print</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="workflow-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">📚 How It Works</h2>
+                <p class="section-subtitle">Simple 3-step process for complete cattle analysis</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">📤</div>
+                        <h3>Upload Image</h3>
+                        <p>Take a clear photo of your cattle or upload an existing image. Our AI works best with side-view images showing the full body structure.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🤖</div>
+                        <h3>AI Analysis</h3>
+                        <p>Our advanced AI models analyze the image for breed classification, body measurements, and quality assessment using computer vision.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">📊</div>
+                        <h3>Get Results</h3>
+                        <p>Receive comprehensive analysis including breed identification, body parameters, ATC scores, and professional recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Analysis Container -->
+    <div class="container">
+        <div class="analysis-wrapper">
+            
+            <!-- Image Upload Section -->
+            <section class="upload-section">
+                <div class="section-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-cloud-upload-alt"></i> Upload Cattle Image</h2>
+                        <p>Upload or capture a clear image of your cattle for AI analysis</p>
+                    </div>
+                    
+                    <div class="upload-area" id="drop-area">
+                        <input type="file" id="fileInput" accept="image/*" class="file-input" hidden>
+                        <div class="upload-content">
+                            <div class="upload-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h3>Drop image here or click to browse</h3>
+                            <p>Supports JPG, JPEG, PNG • Max 10MB</p>
+                        </div>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div id="preview-section" class="image-preview d-none">
+                        <div class="preview-container">
+                            <img id="preview-image" src="" alt="Preview">
+                            <div class="preview-overlay">
+                                <span class="status-badge success">
+                                    <i class="fas fa-check-circle"></i> Ready for Analysis
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button id="comprehensive-analysis-btn" class="btn btn-primary btn-lg">
+                                <i class="fas fa-magic"></i> Complete Analysis
+                            </button>
+                            <button id="demo-btn" class="btn btn-warning">
+                                <i class="fas fa-eye"></i> View Demo Results
+                            </button>
+                            <button id="demo-none-btn" class="btn btn-outline-warning">
+                                <i class="fas fa-times-circle"></i> Demo "None" Detection
+                            </button>
+                            <button id="analyze-btn" class="btn btn-outline-primary">
+                                <i class="fas fa-brain"></i> Classification Only
+                            </button>
+                            <button id="analyze-structure-btn" class="btn btn-outline-secondary">
+                                <i class="fas fa-ruler-combined"></i> Body Structure Only
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading State -->
+            <div id="loading" class="loading-section d-none">
+                <div class="section-card">
+                    <div class="loading-content">
+                        <div class="loading-spinner">
+                            <div class="spinner-ring"></div>
+                        </div>
+                        <h3>Analyzing Your Cattle</h3>
+                        <p>Our AI is processing the image...</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Container -->
+            <div id="results-container" class="results-container d-none">
+                
+                <!-- Breed Classification Section -->
+                <section class="classification-section">
+                    <div class="section-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-tag"></i> Breed Classification</h2>
+                            <p>AI-powered breed identification results</p>
+                        </div>
+                        
+                        <div class="classification-grid">
+                            <div class="result-card primary">
+                                <div class="result-icon">
+                                    <i class="fas fa-cow"></i>
+                                </div>
+                                <h3>Animal Type</h3>
+                                <div class="result-value" id="cattle-type">-</div>
+                                <div class="confidence-meter">
+                                    <div class="confidence-label">Confidence</div>
+                                    <div class="confidence-bar">
+                                        <div id="cattle-confidence" class="confidence-fill"></div>
+                                    </div>
+                                    <div class="confidence-percentage" id="cattle-percentage">0%</div>
+                                </div>
+                            </div>
+
+                            <div class="result-card secondary" id="breed-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-dna"></i>
+                                </div>
+                                <h3>Breed</h3>
+                                <div class="result-value" id="breed-name">-</div>
+                                <div class="confidence-meter">
+                                    <div class="confidence-label">Confidence</div>
+                                    <div class="confidence-bar">
+                                        <div id="breed-confidence" class="confidence-fill"></div>
+                                    </div>
+                                    <div class="confidence-percentage" id="breed-percentage">0%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Body Mass Parameters Section -->
+                <section class="body-parameters-section">
+                    <div class="section-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-ruler-combined"></i> Body Mass Parameters</h2>
+                            <p>Morphometric measurements and body condition analysis</p>
+                        </div>
+                        
+                        <!-- Visual Analysis -->
+                        <div class="visual-analysis">
+                            <div class="analysis-image-container">
+                                <img id="structure-image" src="" alt="Body Structure Analysis" class="analysis-image">
+                                <div class="analysis-overlay">
+                                    <span class="overlay-label">Keypoint Detection</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Parameters Grid -->
+                        <div class="parameters-grid">
+                            <div class="parameter-card">
+                                <div class="parameter-icon">
+                                    <i class="fas fa-weight"></i>
+                                </div>
+                                <h4>Body Condition Score</h4>
+                                <div class="parameter-value" id="body-condition-score">-</div>
+                                <div class="parameter-unit">/ 5.0</div>
+                                <div class="parameter-status" id="bcs-status">Calculating...</div>
+                            </div>
+
+                            <div class="parameter-card">
+                                <div class="parameter-icon">
+                                    <i class="fas fa-arrows-alt-h"></i>
+                                </div>
+                                <h4>Body Length</h4>
+                                <div class="parameter-value" id="body-length">-</div>
+                                <div class="parameter-unit">meters</div>
+                                <div class="parameter-status" id="body-length-status">Calculating...</div>
+                            </div>
+
+                            <div class="parameter-card">
+                                <div class="parameter-icon">
+                                    <i class="fas fa-arrows-alt-v"></i>
+                                </div>
+                                <h4>Chest Depth</h4>
+                                <div class="parameter-value" id="chest-depth">-</div>
+                                <div class="parameter-unit">meters</div>
+                                <div class="parameter-status" id="chest-depth-status">Calculating...</div>
+                            </div>
+
+                            <div class="parameter-card">
+                                <div class="parameter-icon">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                </div>
+                                <h4>Chest Width</h4>
+                                <div class="parameter-value" id="chest-width">-</div>
+                                <div class="parameter-unit">meters</div>
+                                <div class="parameter-status" id="chest-width-status">Calculating...</div>
+                            </div>
+
+                            <div class="parameter-card">
+                                <div class="parameter-icon">
+                                    <i class="fas fa-ruler-vertical"></i>
+                                </div>
+                                <h4>Height at Withers</h4>
+                                <div class="parameter-value" id="height-withers">-</div>
+                                <div class="parameter-unit">meters</div>
+                                <div class="parameter-status" id="height-status">Calculating...</div>
+                            </div>
+
+                            <div class="parameter-card">
+                                <div class="parameter-icon">
+                                    <i class="fas fa-angle-up"></i>
+                                </div>
+                                <h4>Rump Angle</h4>
+                                <div class="parameter-value" id="rump-angle">-</div>
+                                <div class="parameter-unit">degrees</div>
+                                <div class="parameter-status" id="rump-status">Calculating...</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ATC Score Section -->
+                <section class="atc-score-section">
+                    <div class="section-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-chart-bar"></i> ATC Score Analysis</h2>
+                            <p>Animal Type Classification quality assessment</p>
+                        </div>
+                        
+                        <div class="atc-container">
+                            <!-- Main ATC Score -->
+                            <div class="atc-main-card">
+                                <div class="atc-score-circle">
+                                    <div class="score-value" id="atc-score-value">0</div>
+                                    <div class="score-label">ATC Score</div>
+                                </div>
+                                <div class="atc-level" id="atc-level">Calculating...</div>
+                                <div class="atc-description">
+                                    Classification accuracy based on morphometric analysis
+                                </div>
+                            </div>
+
+                            <!-- Component Breakdown -->
+                            <div class="atc-components-card">
+                                <h4>Component Analysis</h4>
+                                <div class="components-list" id="atc-components">
+                                    <!-- Components will be populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recommendations -->
+                        <div class="recommendations-card">
+                            <h4><i class="fas fa-lightbulb"></i> Recommendations</h4>
+                            <div class="recommendations-list" id="atc-recommendations">
+                                <!-- Recommendations will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Professional Report Section -->
+                <section class="report-section">
+                    <div class="section-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-file-medical-alt"></i> Analysis Report</h2>
+                            <p>Comprehensive professional report</p>
+                        </div>
+                        
+                        <div class="report-container">
+                            <div class="report-content" id="analysis-report">
+                                <!-- Report content will be populated here -->
+                            </div>
+                            
+                            <div class="report-actions">
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </button>
+                                <button class="btn btn-outline-secondary">
+                                    <i class="fas fa-share"></i> Share Report
+                                </button>
+                                <button class="btn btn-outline-success">
+                                    <i class="fas fa-print"></i> Print Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

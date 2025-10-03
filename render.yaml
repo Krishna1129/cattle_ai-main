@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: cattle-ai-analyzer
+    env: python
+    plan: starter
+    region: oregon
+    pythonVersion: "3.10"
+    dockerfilePath: null
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 300
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: MAX_CONTENT_LENGTH
+        value: "10485760"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+
