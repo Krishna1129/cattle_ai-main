@@ -2,77 +2,68 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange.svg)](https://pytorch.org/)
-[![Flask](https://img.shields.io/badge/Flask-2.0%2B-lightgreen.svg)](https://flask.palletsprojects.com/)
+[![Flask](https://img.shields.io/badge/Flask-2.3%2B-lightgreen.svg)](https://flask.palletsprojects.com/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.8%2B-red.svg)](https://opencv.org/)
+[![Render](https://img.shields.io/badge/Deploy-Render-purple.svg)](https://render.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> **Advanced AI-powered livestock management platform featuring deep learning classification, morphometric analysis, and professional reporting tools for precision cattle assessment.**
+> **Advanced AI-powered livestock management platform featuring deep learning classification, morphometric analysis, and professional web interface for precision cattle assessment.**
 
 ## 📋 Table of Contents
 - [🎯 Project Overview](#-project-overview)
 - [✨ Key Features](#-key-features)
 - [🏗️ System Architecture](#️-system-architecture)
-- [🔬 Technical Components](#-technical-components)
-- [🛠️ Technologies Stack](#️-technologies-stack)
+- [️ Technologies Stack](#️-technologies-stack)
 - [📊 Model Performance](#-model-performance)
 - [🚀 Quick Start](#-quick-start)
 - [📖 Usage Guide](#-usage-guide)
 - [🎨 User Interface](#-user-interface)
 - [📁 Project Structure](#-project-structure)
 - [🔧 Configuration](#-configuration)
+- [🚀 Deployment](#-deployment)
 - [🤝 Contributing](#-contributing)
 - [📜 License](#-license)
 
 ## 🎯 Project Overview
 
-This comprehensive cattle analysis platform combines **cutting-edge AI technology** with **computer vision** to provide professional-grade livestock assessment tools. Designed for farmers, veterinarians, livestock specialists, and agricultural researchers.
+This comprehensive cattle analysis platform combines **cutting-edge AI technology** with **computer vision** to provide professional-grade livestock assessment tools. Built with Flask web framework and PyTorch deep learning models, it's designed for farmers, veterinarians, livestock specialists, and agricultural researchers.
 
 ### 🎪 Live Demo
 ```bash
+# Local development
 python app.py
 # Open http://localhost:5000 in your browser
-# Click "View Demo Results" to see all features!
 ```
+
+### 🌐 **Production Deploy**
+**Ready-to-deploy** on Render with one-click deployment using the included `render.yaml` configuration.
 
 ## ✨ Key Features
 
 ### 🧠 **AI Classification Engine**
-- **Cattle vs Buffalo Detection** with 97%+ accuracy
-- **Breed Identification** from 41+ breeds including:
-  - Indian breeds: Gir, Sahiwal, Red Sindhi, Tharparkar
-  - Buffalo breeds: Murrah, Jaffrabadi, Nili-Ravi, Surti
-  - International breeds: Holstein Friesian, Jersey, Ayrshire
+- **Cattle vs Buffalo Detection** with high accuracy using CNN models
+- **Breed Identification** from multiple cattle and buffalo breeds
 - **Real-time confidence scoring** for all predictions
+- **Multi-model ensemble** for robust classification
 
 ### 📏 **Morphometric Analysis**
 - **Body Structure Assessment** using computer vision
-- **Comprehensive measurements**:
-  - Body Length & Width calculations
-  - Height at Withers measurement
-  - Chest Depth & Width analysis
-  - Rump Angle assessment
-- **Body Condition Scoring** (1-5 scale)
+- **Comprehensive measurements** and body condition scoring
+- **Visual keypoint detection** and analysis
+- **Professional assessment reports**
 
-### 📊 **ATC Scoring System**
-- **Animal Type Classification** quality assessment
-- **Component-wise analysis**:
-  - Morphometric Accuracy Score
-  - Classification Confidence Rating
-  - Body Structure Quality Index
-- **Professional recommendations** based on analysis
+### 🎨 **Professional Web Interface**
+- **Modern responsive design** for all devices
+- **Drag-and-drop image upload** with real-time preview
+- **Interactive results dashboard** with visual analytics
+- **Multiple page interface**: Home, About, FAQ, Guide
+- **Error handling** with custom 404/500 pages
 
-### 📋 **Professional Reporting**
-- **Comprehensive analysis reports** with visual data
-- **PDF export capabilities** for record keeping
-- **Share & print functionality** for consultations
-- **Visual analysis overlays** showing keypoint detection
-
-### 🎨 **Modern Web Interface**
-- **Responsive design** for desktop and mobile
-- **Drag-and-drop image upload** with preview
-- **Real-time progress indicators** during analysis
-- **Professional dashboard** with clear result visualization
-- **Feature overview** and workflow guidance
+### 📊 **Analysis Features**
+- **Real-time image processing** with progress indicators
+- **Detailed analysis reports** with visual overlays
+- **Confidence metrics** and quality assessments
+- **Professional formatting** for documentation
 
 ## 🏗️ System Architecture
 
@@ -84,267 +75,353 @@ python app.py
          │                        │                        │
          ▼                        ▼                        ▼
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│ Responsive UI   │    │ API Endpoints    │    │ Cattle Classifier│
-│ Image Upload    │    │ Image Processing │    │ Breed Classifier │
-│ Results Display │    │ Model Integration│    │ Structure Analyzer│
+│ • Responsive UI │    │ • Image Upload   │    │ • Cattle Model  │
+│ • Multi-page    │    │ • API Endpoints  │    │ • Breed Model   │
+│ • Error Pages   │    │ • Model Loading  │    │ • Body Analyzer │
+│ • Interactive   │    │ • Result Display │    │ • Preprocessing │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
 ```
 
 ### 🔄 **Processing Pipeline**
-1. **Image Input** → Upload & validation
-2. **Preprocessing** → Resize, normalize, augment
-3. **AI Classification** → Cattle type & breed prediction
-4. **Morphometric Analysis** → Body measurements & ATC scoring
-5. **Report Generation** → Professional analysis summary
-6. **Results Display** → Interactive web interface
+1. **Image Upload** → Drag-and-drop or file selection
+2. **Validation** → Format and size verification  
+3. **Preprocessing** → Resize, normalize for model input
+4. **AI Analysis** → Cattle classification and breed identification
+5. **Body Analysis** → Morphometric measurements and scoring
+6. **Results** → Interactive dashboard with detailed insights
 
-## 🔬 Technical Components
+## �️ Technologies Stack
 
-### 🤖 **Deep Learning Models**
-- **Primary Classifier**: ResNet-18 based cattle/buffalo detection
-- **Breed Classifier**: Multi-class CNN for 41+ breed identification
-- **Feature Extraction**: Advanced computer vision for morphometric analysis
-- **Transfer Learning**: Pre-trained models fine-tuned on livestock datasets
+### **Backend**
+- **Flask 2.3.3** - Web framework
+- **PyTorch 2.0.1** - Deep learning models
+- **OpenCV 4.8.1** - Computer vision processing
+- **Pillow 10.0.1** - Image handling
+- **NumPy 1.24.3** - Numerical computations
+- **Gunicorn 21.2.0** - Production WSGI server
 
-### 🖥️ **Computer Vision Pipeline**
-- **OpenCV Integration** for image processing
-- **Keypoint Detection** for anatomical landmarks
-- **Measurement Algorithms** for morphometric calculations
-- **Visualization Tools** for analysis overlay generation
+### **Frontend**
+- **HTML5** - Modern semantic markup
+- **CSS3** - Responsive design with Grid/Flexbox
+- **JavaScript** - Interactive functionality
+- **Bootstrap-inspired** - Professional UI components
 
-### 🌐 **Web Application**
-- **Flask Backend** with RESTful API design
-- **Modern Frontend** with Bootstrap & custom CSS
-- **AJAX Communication** for seamless user experience
-- **Error Handling** with user-friendly notifications
-
-## 🛠️ Technologies Stack
-
-### **Core Technologies**
-| Component | Technology | Version | Purpose |
-|-----------|------------|---------|---------|
-| **Backend** | Python | 3.10+ | Core application logic |
-| **Web Framework** | Flask | 2.0.1 | API & web server |
-| **Deep Learning** | PyTorch | 2.0.1+cpu | AI model inference |
-| **Computer Vision** | OpenCV | 4.8.1.78 | Image processing |
-| **Frontend** | HTML5/CSS3/JS | Latest | User interface |
-
-### **Key Libraries**
-```python
-# AI & Machine Learning
-torch==2.0.1+cpu
-torchvision==0.15.2+cpu
-numpy==1.24.3
-
-# Web Framework
-Flask==2.0.1
-Werkzeug==2.0.1
-
-# Computer Vision
-opencv-python==4.8.1.78
-Pillow==10.0.1
-
-# Scientific Computing
-scipy==1.11.3
-scikit-learn==1.3.0
-```
+### **Deployment**
+- **Render** - Cloud platform (recommended)
+- **Docker** - Containerization support
+- **Git** - Version control integration
 
 ## 📊 Model Performance
 
-### 🎯 **Classification Accuracy**
-| Model | Training Acc | Validation Acc | Test Acc | F1-Score |
-|-------|-------------|----------------|----------|----------|
-| **Cattle Classifier** | 98.5% | 97.2% | 97.8% | 0.978 |
-| **Breed Classifier** | 94.3% | 91.7% | 92.1% | 0.921 |
+### **Classification Models**
+- **Cattle Detection Model**: `best_cow_buffalo_none_classifier.pth`
+  - Classes: Buffalo, Cow, None
+  - Architecture: CNN-based classifier
+  - Input: 224x224 RGB images
 
-### 📈 **Performance Metrics**
-- **Inference Speed**: ~500ms per image (CPU)
-- **Memory Usage**: ~2GB RAM for full pipeline
-- **Supported Formats**: JPG, PNG, JPEG (max 10MB)
-- **Concurrent Users**: Up to 50 simultaneous analyses
+- **Breed Classification Model**: `breed_classifier.pth`
+  - Multiple breed categories
+  - Fine-tuned for livestock identification
+  - Confidence threshold: 60%
 
-### 🎪 **Breed Coverage**
-**41+ Breeds Supported:**
-- **Indian Cattle**: Gir, Sahiwal, Red Sindhi, Tharparkar, Ongole, Hariana, Kankrej
-- **Indian Buffalo**: Murrah, Jaffrabadi, Nili-Ravi, Surti, Bhadawari, Mehsana
-- **International**: Holstein Friesian, Jersey, Ayrshire, Brown Swiss, Guernsey
+### **Body Structure Analyzer**
+- **Computer vision-based** morphometric analysis
+- **Keypoint detection** for body measurements
+- **Automated scoring** and assessment
+- **Visual overlay** generation
 
 ## 🚀 Quick Start
 
-### 📋 **Prerequisites**
-- Python 3.10 or higher
-- 4GB+ RAM recommended
-- Modern web browser (Chrome, Firefox, Safari, Edge)
+### **Prerequisites**
+- Python 3.10+
+- Git
+- 4GB+ RAM (for model loading)
 
-### ⚡ **Installation**
+### **Installation**
 ```bash
-# 1. Clone the repository
-git clone https://github.com/Krishna1129/cattle_buffalo.git
-cd cattle_buffalo
+# Clone repository
+git clone https://github.com/Krishna1129/cattle_ai-main.git
+cd cattle_ai-main
 
-# 2. Create virtual environment (recommended)
-python -m venv cattle_env
-source cattle_env/bin/activate  # On Windows: cattle_env\Scripts\activate
-
-# 3. Install dependencies
+# Install dependencies
 pip install -r requirements.txt
 
-# 4. Verify model files exist
-ls models/
-# Should show: best_cow_buffalo_none_classifier.pth, breed_classifier.pth
-
-# 5. Start the application
+# Run application
 python app.py
 ```
 
-### 🌐 **Access the Application**
-```
-Open your browser and navigate to:
-http://localhost:5000
-```
+### **Access Application**
+- **Local**: http://localhost:5000
+- **Network**: http://0.0.0.0:5000
 
-## 📖 Usage Guide
+## � Usage Guide
 
-### 🎮 **Getting Started**
-1. **Launch Application** → Run `python app.py`
-2. **Open Web Interface** → Visit `http://localhost:5000`
-3. **Upload Image** → Drag & drop or click to select cattle image
-4. **Choose Analysis** → Select from available options:
-   - **Complete Analysis** → Full AI assessment (recommended)
-   - **Classification Only** → Cattle type & breed identification
-   - **Body Structure Only** → Morphometric measurements
-   - **View Demo Results** → See sample analysis
+### **1. Image Upload**
+- Navigate to the main page
+- Use drag-and-drop or click to select image
+- Supported formats: JPG, JPEG, PNG
+- Maximum size: 10MB
 
-### 📊 **Understanding Results**
+### **2. Analysis Process**
+- Upload triggers automatic processing
+- Real-time progress indicators
+- AI models analyze the image
+- Results appear in interactive dashboard
 
-#### 🏷️ **Classification Results**
-- **Animal Type**: Cow or Buffalo with confidence percentage
-- **Breed**: Specific breed identification with accuracy score
-- **Color-coded confidence**: Green (80%+), Yellow (60-79%), Red (<60%)
+### **3. Results Interpretation**
+- **Classification Results**: Animal type and breed
+- **Confidence Scores**: Prediction reliability
+- **Body Analysis**: Morphometric measurements
+- **Visual Overlays**: Keypoint detection
 
-#### 📐 **Body Parameters**
-- **Body Condition Score**: Health assessment (1-5 scale)
-- **Morphometric Measurements**: Length, width, height in meters
-- **Angles**: Rump angle and other anatomical measurements
-
-#### 🎯 **ATC Scoring**
-- **Overall Score**: Composite quality rating (0-100)
-- **Component Breakdown**: Individual metric scores
-- **Recommendations**: Professional advice based on analysis
-
-### 💡 **Best Practices**
-- **Image Quality**: Use clear, well-lit side-view images
-- **Subject Positioning**: Full body visible, minimal obstructions
-- **File Size**: Keep under 10MB for optimal performance
-- **Format**: JPG or PNG recommended
+### **4. Navigation**
+- **Home**: Main analysis interface
+- **About**: Project information
+- **Guide**: Detailed usage instructions  
+- **FAQ**: Common questions and answers
 
 ## 🎨 User Interface
 
-### 🏠 **Homepage Features**
-- **Hero Section** with platform introduction
-- **Feature Overview** showcasing all capabilities
-- **Workflow Guide** with step-by-step instructions
-- **Upload Interface** with drag-and-drop functionality
+### **Responsive Design**
+- **Desktop**: Full-featured dashboard with sidebar navigation
+- **Tablet**: Optimized grid layouts with touch controls
+- **Mobile**: Stacked interface with mobile-first design
 
-### 📱 **Responsive Design**
-- **Desktop**: Full-featured dashboard with side-by-side layouts
-- **Tablet**: Optimized grid layouts with touch-friendly controls
-- **Mobile**: Stacked interface with easy navigation
+### **Page Structure**
+- **Base Template**: `base.html` - Common layout and navigation
+- **Main Interface**: `index.html` - Analysis dashboard
+- **Information Pages**: `about.html`, `guide.html`, `faq.html`
+- **Error Pages**: `404.html`, `500.html` - Custom error handling
 
-### 🎯 **Results Dashboard**
-- **Classification Cards** with confidence meters
-- **Parameter Grid** with visual indicators
-- **ATC Score Circle** with color-coded levels
-- **Analysis Report** with exportable format
+### **Styling**
+- **Modern CSS**: `style.css` - Professional styling
+- **Interactive JS**: `main.js` - Dynamic functionality
+- **Color Scheme**: Professional blue/green palette
+- **Typography**: Clean, readable fonts
 
 ## 📁 Project Structure
 
 ```
-cattle_buffalo/
-├── 📁 models/                          # AI model files
-│   ├── best_cow_buffalo_none_classifier.pth
-│   └── breed_classifier.pth
-├── 📁 static/                          # Frontend assets
-│   ├── 📁 css/
-│   │   └── style.css                   # Modern styling
-│   ├── 📁 js/
-│   │   └── main.js                     # Interactive functionality
-│   └── 📁 uploads/                     # Temporary upload storage
-├── 📁 templates/                       # HTML templates
-│   ├── base.html                       # Base template
-│   ├── index.html                      # Main interface
-│   └── 📁 errors/                      # Error pages
-├── 📄 app.py                          # Flask application
-├── 📄 body_structure_analyzer.py      # Computer vision analysis
-├── 📄 requirements.txt                # Dependencies
-├── 📄 runtime.txt                     # Python version
-├── 📄 Procfile                        # Deployment config
-└── 📄 README.md                       # Documentation
+cattle_ai-main/
+├─ 📄 app.py                          # Flask application entry point
+├─ 📄 body_structure_analyzer.py      # Computer vision analysis module
+├─ 📄 requirements.txt                # Python dependencies
+├─ 📄 runtime.txt                     # Python version specification
+├─ 📄 render.yaml                     # Render deployment configuration
+├─ 📄 Dockerfile                      # Docker containerization
+├─ 📄 RENDER_DEPLOYMENT.md           # Deployment documentation
+├─ � README.md                       # Project documentation
+│
+├─ �📁 models/                          # AI model files
+│   ├─ best_cow_buffalo_none_classifier.pth  # Cattle classification model
+│   └─ breed_classifier.pth                  # Breed identification model
+│
+├─ 📁 static/                          # Frontend assets
+│   ├─ 📁 css/
+│   │   └─ style.css                  # Main stylesheet
+│   └─ 📁 js/
+│       └─ main.js                    # JavaScript functionality
+│
+├─ 📁 templates/                       # HTML templates
+│   ├─ base.html                      # Base template
+│   ├─ index.html                     # Main interface
+│   ├─ about.html                     # About page
+│   ├─ guide.html                     # Usage guide
+│   ├─ faq.html                       # FAQ page
+│   └─ 📁 errors/                     # Error pages
+│       ├─ 404.html                   # Not found page
+│       └─ 500.html                   # Server error page
+│
+└─ � .git/                           # Git version control
+    ├─ .gitignore                     # Git ignore rules
+    ├─ .gitattributes                 # Git attributes
+    └─ .renderignore                  # Render ignore rules
 ```
 
 ## 🔧 Configuration
 
-### ⚙️ **Application Settings**
+### **Application Settings**
 ```python
 # app.py configuration
 MAX_CONTENT_LENGTH = 10 * 1024 * 1024  # 10MB file limit
+UPLOAD_FOLDER = 'static/uploads'       # Upload directory
+SECRET_KEY = os.urandom(24)            # Session security
+DEBUG = False                          # Production mode
+```
+
+### **Model Configuration**
+```python
+# Image preprocessing
 IMAGE_SIZE = (224, 224)                # Model input size
 CONFIDENCE_THRESHOLD = 0.60             # Minimum prediction confidence
+
+# Normalization (ImageNet standards)
+MEAN = [0.485, 0.456, 0.406]
+STD = [0.229, 0.224, 0.225]
 ```
 
-### 🖼️ **Image Processing**
+### **Supported Formats**
 ```python
-# Preprocessing parameters
-MEAN = [0.485, 0.456, 0.406]           # ImageNet normalization
-STD = [0.229, 0.224, 0.225]            # Standard deviation
-SUPPORTED_FORMATS = ['png', 'jpg', 'jpeg']
-```
-
-### 🎛️ **Model Configuration**
-```python
-# Classification classes
-CATTLE_CLASSES = ['Buffalo', 'Cow', 'None']
-BREED_NAMES = [41 breeds...]            # Complete breed list
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+MAX_FILE_SIZE = 10 * 1024 * 1024       # 10MB limit
 ```
 
 ## 🚀 Deployment
 
 ### 🌐 **Local Development**
 ```bash
-# Development server
+# Clone the repository
+git clone https://github.com/Krishna1129/cattle_ai-main.git
+cd cattle_ai-main
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run development server
 python app.py
 # Access: http://localhost:5000
 ```
 
-### ☁️ **Production Deployment**
-```bash
-# Using Gunicorn (recommended)
-pip install gunicorn
-gunicorn -w 4 -b 0.0.0.0:5000 app:app
+### ☁️ **Cloud Deployment - Render (Recommended)**
 
-# Using Docker
-docker build -t cattle-classifier .
-docker run -p 5000:5000 cattle-classifier
+#### **🎯 Quick Deploy**
+1. **Fork this repository** to your GitHub account
+2. **Visit**: https://dashboard.render.com
+3. **Sign up/Login** with GitHub
+4. **Create New Web Service** and connect your repository
+
+#### **⚙️ Render Configuration**
+```yaml
+# render.yaml (already included)
+services:
+  - type: web
+    name: cattle-ai-analyzer
+    env: python
+    region: oregon
+    pythonVersion: "3.10"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 300
 ```
+
+#### **🔑 Environment Variables**
+Set these in Render Dashboard:
+```bash
+FLASK_ENV=production
+MAX_CONTENT_LENGTH=10485760
+PYTHONUNBUFFERED=1
+```
+
+#### **📋 Deployment Settings**
+| Setting | Value |
+|---------|-------|
+| **Build Command** | `pip install -r requirements.txt` |
+| **Start Command** | `gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 300` |
+| **Python Version** | `3.10` |
+| **Instance Type** | `Starter` (Free) |
+| **Auto-Deploy** | `Yes` |
+
+### 🐳 **Docker Deployment**
+```bash
+# Build image
+docker build -t cattle-ai .
+
+# Run container
+docker run -p 5000:5000 cattle-ai
+
+# Or use Docker Compose
+docker-compose up --build
+```
+
+### 🖥️ **Production Deployment**
+```bash
+# Using Gunicorn (Linux/Mac)
+pip install gunicorn
+gunicorn -w 4 -b 0.0.0.0:5000 app:app --timeout 300
+
+# Using Waitress (Windows)
+pip install waitress
+waitress-serve --host=0.0.0.0 --port=5000 app:app
+```
+
+### 🌍 **Other Cloud Platforms**
+
+#### **Heroku**
+```bash
+# Install Heroku CLI and login
+heroku create your-app-name
+git push heroku main
+heroku open
+```
+
+#### **Railway**
+```bash
+# Install Railway CLI
+railway login
+railway init
+railway up
+```
+
+#### **DigitalOcean App Platform**
+1. Connect GitHub repository
+2. Use `requirements.txt` for dependencies  
+3. Set start command: `gunicorn app:app`
 
 ### 📊 **Performance Optimization**
 - **Model Optimization**: Use TorchScript for faster inference
 - **Caching**: Implement Redis for repeated requests
 - **Load Balancing**: Use multiple worker processes
 - **CDN**: Serve static assets from CDN
+- **Image Optimization**: Compress uploaded images
+
+### 🔒 **Security Considerations**
+```python
+# Production security settings
+import os
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+# Enable proxy headers
+app.wsgi_app = ProxyFix(app.wsgi_app)
+
+# Set secure headers
+@app.after_request
+def after_request(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    return response
+```
+
+### 📈 **Monitoring & Logging**
+```python
+# Production logging
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s: %(message)s'
+)
+```
+
+### 💰 **Cost Optimization**
+- **Free Tier Options**: Render, Railway, Heroku (limited hours)
+- **Paid Plans**: Start from $7/month for 24/7 uptime
+- **Model Size**: Optimize model files to reduce storage costs
+- **Request Caching**: Reduce computational overhead
 
 ## 🤝 Contributing
 
 We welcome contributions! Here's how to get involved:
 
-### 🔨 **Development Setup**
+### **🔨 Development Setup**
 ```bash
-# Fork the repository
-git clone https://github.com/your-username/cattle_buffalo.git
-cd cattle_buffalo
+# Fork and clone
+git clone https://github.com/your-username/cattle_ai-main.git
+cd cattle_ai-main
 
 # Create feature branch
 git checkout -b feature/your-feature-name
+
+# Install dependencies
+pip install -r requirements.txt
 
 # Make changes and test
 python app.py
@@ -352,18 +429,28 @@ python app.py
 # Submit pull request
 ```
 
-### 📝 **Contribution Guidelines**
+### **📝 Contribution Guidelines**
 - **Code Style**: Follow PEP 8 standards
-- **Testing**: Add tests for new features
+- **Testing**: Test all new features thoroughly
 - **Documentation**: Update README for new capabilities
 - **Commits**: Use descriptive commit messages
+- **Models**: Ensure model compatibility
 
-### 🎯 **Areas for Contribution**
+### **🎯 Areas for Contribution**
 - [ ] **Model Improvements**: Higher accuracy, more breeds
+- [ ] **UI/UX**: Enhanced interface, mobile optimization  
+- [ ] **Features**: Disease detection, batch processing
 - [ ] **Performance**: Faster inference, optimization
-- [ ] **Features**: Disease detection, video analysis
-- [ ] **UI/UX**: Enhanced interface, mobile app
-- [ ] **Documentation**: Tutorials, API docs
+- [ ] **Documentation**: Tutorials, API documentation
+- [ ] **Testing**: Unit tests, integration tests
+
+### **🐛 Bug Reports**
+Use GitHub Issues with:
+- Clear description of the problem
+- Steps to reproduce
+- Expected vs actual behavior
+- Environment details (OS, Python version)
+- Screenshots if applicable
 
 ## 📜 License
 
@@ -378,9 +465,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 📞 Support & Contact
 
-- **Issues**: [GitHub Issues](https://github.com/Krishna1129/cattle_buffalo/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Krishna1129/cattle_buffalo/discussions)
-- **Email**: [Contact the maintainers](mailto:your-email@example.com)
+- **Issues**: [GitHub Issues](https://github.com/Krishna1129/cattle_ai-main/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Krishna1129/cattle_ai-main/discussions)
+- **Repository**: [GitHub Repository](https://github.com/Krishna1129/cattle_ai-main)
 
 ---
 
@@ -390,7 +477,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made with ❤️ for the agricultural community**
 
-[![GitHub stars](https://img.shields.io/github/stars/Krishna1129/cattle_buffalo.svg?style=social&label=Star)](https://github.com/Krishna1129/cattle_buffalo)
-[![GitHub forks](https://img.shields.io/github/forks/Krishna1129/cattle_buffalo.svg?style=social&label=Fork)](https://github.com/Krishna1129/cattle_buffalo/fork)
+[![GitHub stars](https://img.shields.io/github/stars/Krishna1129/cattle_ai-main.svg?style=social&label=Star)](https://github.com/Krishna1129/cattle_ai-main)
+[![GitHub forks](https://img.shields.io/github/forks/Krishna1129/cattle_ai-main.svg?style=social&label=Fork)](https://github.com/Krishna1129/cattle_ai-main/fork)
 
 </div>
