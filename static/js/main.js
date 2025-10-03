@@ -151,8 +151,25 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             hideLoading();
             if (data.success) {
-                displayStructureResults(data);
-                showResults();
+                // Check if animal type is "None"
+                if (data.cattle_type === 'None') {
+                    // Only display classification results, no structure analysis
+                    displayClassificationResults(data);
+                    showResults();
+                    
+                    // Show informative message
+                    const notification = document.createElement('div');
+                    notification.className = 'alert alert-info mt-3';
+                    notification.innerHTML = `
+                        <i class="fas fa-info-circle"></i> 
+                        <strong>No Animal Detected:</strong> ${data.message || 'The image does not contain a detectable cattle or buffalo. Body structure analysis is not applicable.'}
+                    `;
+                    resultsContainer.appendChild(notification);
+                } else {
+                    // Normal structure analysis results
+                    displayStructureResults(data);
+                    showResults();
+                }
             } else {
                 alert('Error: ' + (data.error || 'Structure analysis failed'));
             }
@@ -200,6 +217,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Skipping structure analysis - animal type is None');
                     hideLoading();
                     showResults();
+                    
+                    // Show informative message for comprehensive analysis with "None" result
+                    const notification = document.createElement('div');
+                    notification.className = 'alert alert-info mt-3';
+                    notification.innerHTML = `
+                        <i class="fas fa-info-circle"></i> 
+                        <strong>No Animal Detected:</strong> The image does not contain a detectable cattle or buffalo. Only classification results are shown.
+                    `;
+                    resultsContainer.appendChild(notification);
+                    
                     return Promise.resolve({ success: false, skip: true });
                 }
             } else {
@@ -365,22 +392,29 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hide body parameters and ATC sections if animal type is "None"
         const bodyParametersSection = document.querySelector('.body-parameters-section');
         const atcScoreSection = document.querySelector('.atc-score-section');
+        const reportSection = document.querySelector('.report-section');
         
         if (data.cattle_type === 'None') {
-            console.log('Animal type is None - hiding body parameters and ATC sections');
+            console.log('Animal type is None - hiding body parameters, ATC sections, and analysis report');
             if (bodyParametersSection) {
                 bodyParametersSection.style.display = 'none';
             }
             if (atcScoreSection) {
                 atcScoreSection.style.display = 'none';
             }
+            if (reportSection) {
+                reportSection.style.display = 'none';
+            }
         } else {
-            console.log('Animal type is valid - showing body parameters and ATC sections');
+            console.log('Animal type is valid - showing body parameters, ATC sections, and analysis report');
             if (bodyParametersSection) {
                 bodyParametersSection.style.display = 'block';
             }
             if (atcScoreSection) {
                 atcScoreSection.style.display = 'block';
+            }
+            if (reportSection) {
+                reportSection.style.display = 'block';
             }
         }
     }

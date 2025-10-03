@@ -213,6 +213,23 @@ def analyze_structure():
         # First, classify the animal
         cattle_type, cattle_confidence = predict_cattle(image)
         
+        # If animal type is "None", return early with classification only
+        if cattle_type == 'None':
+            app.logger.info(f'Animal type is None (confidence: {cattle_confidence:.3f}) - skipping body structure analysis')
+            
+            # Convert image to base64 for display
+            buffered = BytesIO()
+            image.save(buffered, format="JPEG")
+            img_str = base64.b64encode(buffered.getvalue()).decode()
+            
+            return jsonify({
+                'success': True,
+                'cattle_type': cattle_type,
+                'cattle_confidence': f"{cattle_confidence*100:.2f}%",
+                'image': img_str,
+                'message': 'No animal detected in the image. Body structure analysis skipped.'
+            })
+        
         # Get breed if confidence is high enough
         breed_name = "Unknown"
         if cattle_confidence >= 0.60 and cattle_type in ['Cow', 'Buffalo']:
